@@ -1,27 +1,64 @@
 import * as THREE from "three";
 
 // desktop
-export const initialCameraPosition = new THREE.Vector3(2.44, 4.9, 8.9);
-export const cameraLookAt_1 = new THREE.Vector3(-1.81, -0.13, 1.16);
-export const cameraLookAt_2 = new THREE.Vector3(0.9, 0.6, 1.8);
-export const cameraLookAt_3 = new THREE.Vector3(0.68, 0.41, 2.37);
-export const cameraLookAt_4 = new THREE.Vector3(1.14, -0.15, 1.16);
-export const cameraLookAt_5 = new THREE.Vector3(0.53, -0.69, 1.58);
-export const cameraLookAt_6 = new THREE.Vector3(0.18, -0.64, 0.99);
-export const cameraLookAt_7 = new THREE.Vector3(-0.27, 0, 0.8);
+export const camera_position_1 = new THREE.Vector3(-0.05, -3.53, 3.58);
+export const cameraLookAt_1 = new THREE.Vector3(-0.04, 0.91, 1.37);
+
+export const camera_position_2 = new THREE.Vector3(-0.03, 2.32, 6.13);
+export const cameraLookAt_2 = new THREE.Vector3(-0.04, 0.91, 1.37);
+
+export const camera_position_3 = new THREE.Vector3(3.43, 3.4, 3.88);
+export const cameraLookAt_3 = new THREE.Vector3(-0.04, 0.88, 1.37);
+
+export const camera_position_4 = new THREE.Vector3(4.45, 0.1, 0.78);
+export const cameraLookAt_4 = new THREE.Vector3(-0.05, 0.51, 1.38);
+
+export const camera_position_5 = new THREE.Vector3(1.66, -0.46, -2.18);
+export const cameraLookAt_5 = new THREE.Vector3(0.51, 0.54, 1.5);
+
+export const camera_position_6 = new THREE.Vector3(-1.88, -0.25, -1.63);
+export const cameraLookAt_6 = new THREE.Vector3(-0.05, 0.55, 1.89);
+
+export const camera_position_7 = new THREE.Vector3(-3.1, 0.9, 1.4);
+export const cameraLookAt_7 = new THREE.Vector3(0.09, 0.35, 1);
+
+export const camera_position_8 = new THREE.Vector3(-1.17, -0.02, 3.42);
+export const cameraLookAt_8 = new THREE.Vector3(0.24, 0.45, 1.12);
+
+export const camera_position_9 = new THREE.Vector3(1.67, 1.93, 3.04);
+export const cameraLookAt_9 = new THREE.Vector3(-0.01, 0.75, 1.22);
+
+export const camera_position_10 = new THREE.Vector3(5.11, 4.2, 5.31);
+export const cameraLookAt_10 = new THREE.Vector3(0.58, 0.65, 0.86);
 
 // mobile
 
-export const initialCameraPosition_mobile = new THREE.Vector3(
-  8.93,
-  5.99,
-  12.17
-);
-export const cameraLookAt_1_mobile = new THREE.Vector3(0.25, -1.03, 0.58);
-export const cameraLookAt_2_mobile = new THREE.Vector3(-0.28, -1.28, 0.42);
-export const cameraLookAt_3_mobile = new THREE.Vector3(-0.21, -1.21, 0.44);
-export const cameraLookAt_4_mobile = new THREE.Vector3(-0.08, -1.55, 0.59);
-export const cameraLookAt_5_mobile = new THREE.Vector3(-0.28, -1.41, 0.626);
-export const cameraLookAt_6_mobile = new THREE.Vector3(0.159, -1.66, 0.408);
+export const camera_position_1_mobile = new THREE.Vector3(-0.05, -3.53, 3.58);
+export const cameraLookAt_1_mobile = new THREE.Vector3(-0.04, 0.91, 1.37);
 
-export const cameraLookAt_7_mobile = new THREE.Vector3(0.26, -0.69, -0.19);
+export const camera_position_2_mobile = new THREE.Vector3(-0.03, 2.32, 6.13);
+export const cameraLookAt_2_mobile = new THREE.Vector3(-0.04, 0.91, 1.37);
+
+export const camera_position_3_mobile = new THREE.Vector3(3.43, 3.4, 3.88);
+export const cameraLookAt_3_mobile = new THREE.Vector3(-0.04, 0.88, 1.37);
+
+export const camera_position_4_mobile = new THREE.Vector3(4.45, 0.1, 0.78);
+export const cameraLookAt_4_mobile = new THREE.Vector3(-0.05, 0.51, 1.38);
+
+export const camera_position_5_mobile = new THREE.Vector3(1.66, -0.46, -2.18);
+export const cameraLookAt_5_mobile = new THREE.Vector3(0.51, 0.54, 1.5);
+
+export const camera_position_6_mobile = new THREE.Vector3(-1.88, -0.25, -1.63);
+export const cameraLookAt_6_mobile = new THREE.Vector3(-0.05, 0.55, 1.89);
+
+export const camera_position_7_mobile = new THREE.Vector3(-3.1, 0.9, 1.4);
+export const cameraLookAt_7_mobile = new THREE.Vector3(0.09, 0.35, 1);
+
+export const camera_position_8_mobile = new THREE.Vector3(-1.17, -0.02, 3.42);
+export const cameraLookAt_8_mobile = new THREE.Vector3(0.24, 0.45, 1.12);
+
+export const camera_position_9_mobile = new THREE.Vector3(1.67, 1.93, 3.04);
+export const cameraLookAt_9_mobile = new THREE.Vector3(-0.01, 0.75, 1.22);
+
+export const camera_position_10_mobile = new THREE.Vector3(5.11, 4.2, 5.31);
+export const cameraLookAt_10_mobile = new THREE.Vector3(0.58, 0.65, 0.86);

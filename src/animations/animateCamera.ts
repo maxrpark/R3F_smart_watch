@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CameraInstance } from "../context/threeContext";
+import { CameraInstance } from "../context/useThreeContext";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Params {
@@ -32,8 +32,11 @@ export const animateCamera = ({
       start,
       end,
       scrub: true,
+      markers: true,
     },
   });
+
+  console.log(trigger);
 
   let mm = gsap.matchMedia(),
     breakPoint = 800;

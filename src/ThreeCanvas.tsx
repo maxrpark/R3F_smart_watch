@@ -8,9 +8,21 @@ const ThreeCanvas: React.FC = () => {
   return (
     <div className='webgl-wrapper'>
       <Leva collapsed hidden={locationHash !== "#debug"} />
-      <Canvas flat shadows>
-        <Experience />
+      <Canvas
+        className='canvas'
+        shadows
+        camera={{
+          fov: 25,
+          near: 0.2,
+          far: 1000,
+          position: [10, 0, 0],
+        }}
+        gl={{
+          antialias: true,
+        }}
+      >
         {locationHash === "#debug" && <Perf position='top-left' />}
+        <Experience />
       </Canvas>
     </div>
   );

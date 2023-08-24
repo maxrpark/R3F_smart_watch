@@ -1,8 +1,14 @@
 import { useControls } from "leva";
 import WatchModel from "./components/WatchModel";
-import { OrbitControls, Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { useThreeContext } from "./context/useThreeContext";
+import { useEffect } from "react";
 
 const Experience: React.FC = () => {
+  const { camera } = useThree();
+  const { cameraRef } = useThreeContext();
+
   const { color: ambientColor, intensity: ambientIntensity } = useControls(
     "Ambient Light",
     {
@@ -36,9 +42,14 @@ const Experience: React.FC = () => {
     left: { value: -2, step: 0.01, min: -2, max: 200 },
   });
 
+  useEffect(() => {
+    camera.lookAt(-1.6, -0.47, 1.25);
+    cameraRef.current = camera;
+  }, []);
+
   return (
     <>
-      <OrbitControls />
+      <OrbitControls enabled={false} />
       <Environment preset='apartment' />
       <ambientLight color={ambientColor} intensity={ambientIntensity} />
       <directionalLight
