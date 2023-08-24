@@ -1,61 +1,117 @@
 import { Suspense } from "react";
 import ThreeCanvas from "./ThreeCanvas";
-import * as THREE from "three";
 
 import {
+  Customize,
   Hero,
+  Loader,
   SectionFeatures,
   SectionTitle,
   SectionTitleAndDescription,
 } from "./components";
 import {
+  camera_position_2,
+  camera_position_2_mobile,
+  cameraLookAt_2,
+  cameraLookAt_2_mobile,
+  camera_position_3,
+  camera_position_3_mobile,
+  cameraLookAt_3,
+  cameraLookAt_3_mobile,
+  camera_position_4,
+  camera_position_4_mobile,
+  cameraLookAt_4,
+  cameraLookAt_4_mobile,
+  camera_position_5,
+  camera_position_5_mobile,
   cameraLookAt_5,
   cameraLookAt_5_mobile,
+  camera_position_6,
+  camera_position_6_mobile,
   cameraLookAt_6,
   cameraLookAt_6_mobile,
+  camera_position_7,
+  camera_position_7_mobile,
+  cameraLookAt_7,
+  cameraLookAt_7_mobile,
+  camera_position_8,
+  camera_position_8_mobile,
+  cameraLookAt_8,
+  cameraLookAt_8_mobile,
+  camera_position_9,
+  camera_position_9_mobile,
+  cameraLookAt_9,
+  cameraLookAt_9_mobile,
+  camera_position_10,
+  camera_position_10_mobile,
+  cameraLookAt_10,
+  cameraLookAt_10_mobile,
 } from "./utils/modelPositions";
+import { useProgress } from "@react-three/drei";
 
 const App: React.FC = () => {
+  const { progress } = useProgress();
   return (
     <main>
-      <Suspense fallback={<h1>Loading</h1>}>
+      <Suspense fallback={<Loader progress={progress} />}>
         <ThreeCanvas />
         <div className='main-content-wrapper'>
-          <Hero />
-          <SectionTitle />
-          <SectionTitleAndDescription
-            cameraPositionDesktop={new THREE.Vector3(3.4, 3.4, 3.8)}
-            cameraPositionMobile={new THREE.Vector3(-5.91, 10.28, 9.17)}
-            cameraLookAtMobile={cameraLookAt_5_mobile}
-            cameraLookAtDesktop={new THREE.Vector3(-0.04, 0.91, 1.37)}
+          <Hero
+            cameraPositionDesktop={camera_position_2}
+            cameraPositionMobile={camera_position_2_mobile}
+            cameraLookAtDesktop={cameraLookAt_2}
+            cameraLookAtMobile={cameraLookAt_2_mobile}
           />
-          <SectionFeatures />
-          {/* <SectionTitleAndDescription
-            cameraPositionDesktop={new THREE.Vector3(5.88, 4.26, 10.04)}
-            cameraPositionMobile={new THREE.Vector3(7.55, 7.36, 10.68)}
-            cameraLookAtMobile={cameraLookAt_6_mobile}
-            cameraLookAtDesktop={cameraLookAt_6}
-          /> */}
-          <section></section>
-          <section></section>
-          {/* <SectionTitleAndDescription
-            cameraPositionDesktop={new THREE.Vector3(2.97, 0.05, 3.64)}
-            cameraPositionMobile={new THREE.Vector3(-5.91, 10.28, 9.17)}
-            cameraLookAtMobile={cameraLookAt_5_mobile}
+          <SectionTitle
+            cameraPositionDesktop={camera_position_3}
+            cameraPositionMobile={camera_position_3_mobile}
+            cameraLookAtDesktop={cameraLookAt_3}
+            cameraLookAtMobile={cameraLookAt_3_mobile}
+          />
+          <SectionTitleAndDescription
+            cameraPositionDesktop={camera_position_4}
+            cameraPositionMobile={camera_position_4_mobile}
+            cameraLookAtDesktop={cameraLookAt_4}
+            cameraLookAtMobile={cameraLookAt_4_mobile}
+          />
+          <SectionFeatures
+            cameraPositionDesktop={camera_position_5}
+            cameraPositionMobile={camera_position_5_mobile}
             cameraLookAtDesktop={cameraLookAt_5}
-          />
-          <SectionTitleAndDescription
-            cameraPositionDesktop={new THREE.Vector3(5.88, 4.26, 10.04)}
-            cameraPositionMobile={new THREE.Vector3(7.55, 7.36, 10.68)}
-            cameraLookAtMobile={cameraLookAt_6_mobile}
-            cameraLookAtDesktop={cameraLookAt_6}
-          />
-          <SectionTitleAndDescription
-            cameraPositionDesktop={new THREE.Vector3(2.97, 0.05, 3.64)}
-            cameraPositionMobile={new THREE.Vector3(-5.91, 10.28, 9.17)}
             cameraLookAtMobile={cameraLookAt_5_mobile}
-            cameraLookAtDesktop={cameraLookAt_5}
-          /> */}
+          />
+          <SectionFeatures
+            cameraPositionDesktop={camera_position_6}
+            cameraPositionMobile={camera_position_6_mobile}
+            cameraLookAtDesktop={cameraLookAt_6}
+            cameraLookAtMobile={cameraLookAt_6_mobile}
+          />
+          <SectionTitleAndDescription
+            cameraPositionDesktop={camera_position_7}
+            cameraPositionMobile={camera_position_7_mobile}
+            cameraLookAtDesktop={cameraLookAt_7}
+            cameraLookAtMobile={cameraLookAt_7_mobile}
+          />
+          {/* <section className='static'></section>
+          <section className='static blue'></section> */}
+          <SectionTitleAndDescription
+            cameraPositionDesktop={camera_position_8}
+            cameraPositionMobile={camera_position_8_mobile}
+            cameraLookAtDesktop={cameraLookAt_8}
+            cameraLookAtMobile={cameraLookAt_8_mobile}
+          />
+          <SectionTitleAndDescription
+            cameraPositionDesktop={camera_position_9}
+            cameraPositionMobile={camera_position_9_mobile}
+            cameraLookAtDesktop={cameraLookAt_9}
+            cameraLookAtMobile={cameraLookAt_9_mobile}
+          />
+          <Customize
+            cameraPositionDesktop={camera_position_10}
+            cameraPositionMobile={camera_position_10_mobile}
+            cameraLookAtDesktop={cameraLookAt_10}
+            cameraLookAtMobile={cameraLookAt_10_mobile}
+          />
         </div>
       </Suspense>
     </main>

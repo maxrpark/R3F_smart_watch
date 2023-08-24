@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { CameraInstance } from "../context/useThreeContext";
+import { breakPoint } from "../utils/constants";
 
 interface Params {
   cameraRef: React.MutableRefObject<CameraInstance>;
@@ -24,8 +25,7 @@ export const useAnimateCustomizeCamera = ({
   const timeLine = useRef(gsap.timeline({ reversed: true }));
 
   const animateFunction = () => {
-    let mm = gsap.matchMedia(),
-      breakPoint = 800;
+    let mm = gsap.matchMedia();
     mm.add(
       {
         isDesktop: `(min-width: ${breakPoint}px)`,

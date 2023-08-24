@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience";
 import { Leva } from "leva";
 import { Perf } from "r3f-perf";
+import { camera_position_1 } from "./utils/modelPositions";
 
 const locationHash = window.location.hash;
 const ThreeCanvas: React.FC = () => {
@@ -15,7 +16,11 @@ const ThreeCanvas: React.FC = () => {
           fov: 25,
           near: 0.2,
           far: 1000,
-          position: [10, 0, 0],
+          position: [
+            camera_position_1.x,
+            camera_position_1.y,
+            camera_position_1.z,
+          ],
         }}
         gl={{
           antialias: true,

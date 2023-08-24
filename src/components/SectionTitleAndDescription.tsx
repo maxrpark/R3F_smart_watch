@@ -34,7 +34,7 @@ const SectionTitleAndDescription: React.FC<Props> = ({
         end: "top top",
       });
     }
-  }, [cameraRef.current, cameraRef]);
+  }, [cameraRef.current]);
   return (
     <section ref={sectionContainer}>
       <h2>Section TitleAnd Description</h2>

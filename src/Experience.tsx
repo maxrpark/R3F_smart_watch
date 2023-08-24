@@ -4,10 +4,11 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useThreeContext } from "./context/useThreeContext";
 import { useEffect } from "react";
+import { cameraLookAt_1 } from "./utils/modelPositions";
 
 const Experience: React.FC = () => {
+  const { cameraRef, isCustomizeVisible } = useThreeContext();
   const { camera } = useThree();
-  const { cameraRef } = useThreeContext();
 
   const { color: ambientColor, intensity: ambientIntensity } = useControls(
     "Ambient Light",
@@ -43,13 +44,13 @@ const Experience: React.FC = () => {
   });
 
   useEffect(() => {
-    camera.lookAt(-1.6, -0.47, 1.25);
+    camera.lookAt(cameraLookAt_1);
     cameraRef.current = camera;
   }, []);
 
   return (
     <>
-      <OrbitControls enabled={false} />
+      <OrbitControls enabled={isCustomizeVisible} />
       <Environment preset='apartment' />
       <ambientLight color={ambientColor} intensity={ambientIntensity} />
       <directionalLight

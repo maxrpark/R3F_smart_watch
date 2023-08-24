@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CameraInstance } from "../context/useThreeContext";
+import { breakPoint } from "../utils/constants";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Params {
@@ -36,10 +37,7 @@ export const animateCamera = ({
     },
   });
 
-  console.log(trigger);
-
-  let mm = gsap.matchMedia(),
-    breakPoint = 800;
+  let mm = gsap.matchMedia();
   mm.add(
     {
       isDesktop: `(min-width: ${breakPoint}px)`,
