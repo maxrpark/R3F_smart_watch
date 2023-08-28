@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
   }, [cameraRef.current]);
 
   return (
-    <Wrapper style={{ height: "170vh" }} ref={sectionContainer}>
+    <Wrapper ref={sectionContainer}>
       <div className='hero-content'>
         {/* @ts-ignore */}
         <h2 ref={(el) => (mainTextContent.current[0] = el)}>

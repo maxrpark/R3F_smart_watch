@@ -25,6 +25,15 @@ html {
   z-index: 1;
 }
 
+@media screen and (max-width: 800px) {
+  section {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .webgl-wrapper {
+    z-index: -1 !important;
+  }
+}
+
 section {
   min-height: 100vh;
   /* border: 2px solid red; */

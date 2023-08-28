@@ -3,12 +3,14 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   height: 150vh;
   position: relative;
+  background: transparent;
   .hero-content {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: 15%;
     text-align: center;
+    width: 90%;
 
     h2 {
       font-size: 5rem;
@@ -27,30 +29,39 @@ const Wrapper = styled.section`
       letter-spacing: 0.48px;
     }
 
-    .logo-watch {
-      opacity: 0;
-      margin-top: 0.5rem;
-      .apple-logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.2rem;
-      }
-      h3 {
-        color: var(--primary-black);
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin-top: 0.2rem;
+    @media screen and (max-width: 800px) {
+      h2 {
+        font-size: 3rem;
       }
       p {
-        color: var(--primary-orange);
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        font-weight: 500;
-        margin-left: 1rem;
+        font-size: 1rem;
       }
+    }
+  }
+
+  .logo-watch {
+    opacity: 0;
+    margin-top: 0.5rem;
+    .apple-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+    h3 {
+      color: var(--primary-black);
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-top: 0.2rem;
+    }
+    p {
+      color: var(--primary-orange);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-left: 1rem;
     }
   }
 `;

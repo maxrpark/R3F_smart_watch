@@ -57,6 +57,15 @@ const Wrapper = styled.section`
     line-height: normal;
     color: var(--primary-black);
   }
+
+  @media screen and (max-width: 800px) {
+    h2 {
+      font-size: 3rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
 export default SectionTitle;

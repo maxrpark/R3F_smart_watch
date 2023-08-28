@@ -114,6 +114,12 @@ const Wrapper = styled.section<{ $alignItems?: string }>`
     letter-spacing: 0.48px;
     max-width: 500px;
   }
+
+  @media screen and (max-width: 800px) {
+    h3 {
+      font-size: 2rem;
+    }
+  }
 `;
 
 export default SectionTitleAndDescription;

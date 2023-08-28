@@ -62,5 +62,18 @@ const Wrapper = styled.section`
     font-weight: 700;
     line-height: normal;
   }
+
+  @media screen and (max-width: 800px) {
+    padding: 2rem 0;
+    .duration-details {
+      flex-direction: column;
+    }
+
+    .division {
+      background: #d9d9d9;
+      height: 3px;
+      width: 90%;
+    }
+  }
 `;
 export default Wrapper;

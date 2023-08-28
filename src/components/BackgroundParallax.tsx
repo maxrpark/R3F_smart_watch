@@ -77,6 +77,7 @@ const Wrapper = styled.section`
   align-items: flex-start;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 
   img {
     position: absolute;
@@ -101,6 +102,15 @@ const Wrapper = styled.section`
     font-weight: 700;
     line-height: normal;
     color: black;
+  }
+
+  @media screen and (max-width: 800px) {
+    h3 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const CustomizeWrapper = styled.section`
   position: relative;
-
+  background: transparent;
   .btn-customize {
     position: absolute;
     bottom: 20px;
