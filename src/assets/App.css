@@ -7,6 +7,13 @@
 :root {
   --primary-white: #ffffff;
   --primary-black: #000000;
+  --primary-orange: #f56900;
+  --primary-gray: #86868b;
+}
+
+html {
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
 }
 
 .webgl-wrapper {
@@ -20,8 +27,6 @@
 
 section {
   min-height: 100vh;
-  border: 2px solid red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* border: 2px solid red; */
+  padding: 0 2rem;
 }

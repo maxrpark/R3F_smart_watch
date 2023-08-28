@@ -33,7 +33,7 @@ export const animateCamera = ({
       start,
       end,
       scrub: true,
-      markers: true,
+      // markers: true,
     },
   });
 

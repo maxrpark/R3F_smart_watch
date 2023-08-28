@@ -1,23 +1,16 @@
 import { useEffect, useRef } from "react";
 import { useThreeContext } from "../context/useThreeContext";
 import { animateCamera } from "../animations/animateCamera";
+import styled from "styled-components";
+import {
+  camera_position_3,
+  camera_position_3_mobile,
+  cameraLookAt_3,
+  cameraLookAt_3_mobile,
+} from "../utils/modelPositions";
 
-interface Params {
-  cameraPositionDesktop: THREE.Vector3;
-  cameraPositionMobile: THREE.Vector3;
-  cameraLookAtMobile: THREE.Vector3;
-  cameraLookAtDesktop: THREE.Vector3;
-}
-interface Props extends Params {}
-
-const SectionTitle: React.FC<Props> = ({
-  cameraPositionDesktop,
-  cameraPositionMobile,
-  cameraLookAtMobile,
-  cameraLookAtDesktop,
-}) => {
+const SectionTitle: React.FC = () => {
   const { cameraRef, cameraTarget } = useThreeContext();
-
   const sectionContainer = useRef<HTMLDivElement>(null!);
 
   useEffect(() => {
@@ -26,20 +19,44 @@ const SectionTitle: React.FC<Props> = ({
         trigger: sectionContainer.current,
         cameraRef,
         cameraTarget,
-        cameraPositionDesktop,
-        cameraPositionMobile,
-        cameraLookAtMobile,
-        cameraLookAtDesktop,
+        cameraPositionDesktop: camera_position_3,
+        cameraPositionMobile: camera_position_3_mobile,
+        cameraLookAtMobile: cameraLookAt_3_mobile,
+        cameraLookAtDesktop: cameraLookAt_3,
         start: "top bottom",
         end: "top top",
       });
     }
   }, [cameraRef.current]);
   return (
-    <section ref={sectionContainer}>
-      <h2>Section Title</h2>
-    </section>
+    <Wrapper ref={sectionContainer}>
+      <p>Design</p>
+      <h2>
+        Pioneering <br /> engineering.
+      </h2>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  p {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--primary-black);
+  }
+  h2 {
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--primary-black);
+  }
+`;
 
 export default SectionTitle;

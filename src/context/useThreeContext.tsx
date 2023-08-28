@@ -97,11 +97,10 @@ export const ThreeProvider: FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("no");
-
-    if (!cameraRef.current) return;
-    console.log("yes");
-  }, [cameraRef.current]);
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   return (
     <ThreeContext.Provider

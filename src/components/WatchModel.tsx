@@ -17,13 +17,11 @@ const WatchModel: React.FC = () => {
       child.castShadow = true;
       child.receiveShadow = true;
 
-      // Only for this model
       if (child.name === "outerBand") {
         outerBand.current = child;
 
         child.material.emissiveIntensity = 0;
       }
-      // Only for this model
       if (child.name === "innerBand") {
         innerBand.current = child;
         child.material.emissiveIntensity = 0;

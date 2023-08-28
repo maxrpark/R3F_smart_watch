@@ -5,21 +5,14 @@ import { convertBgColor } from "../utils/helpers";
 import { animateCamera } from "../animations/animateCamera";
 import Wrapper from "../wrappers/CustomizerWrapper";
 import * as THREE from "three";
+import {
+  camera_position_10,
+  camera_position_10_mobile,
+  cameraLookAt_10,
+  cameraLookAt_10_mobile,
+} from "../utils/modelPositions";
 
-interface Params {
-  cameraPositionDesktop: THREE.Vector3;
-  cameraPositionMobile: THREE.Vector3;
-  cameraLookAtMobile: THREE.Vector3;
-  cameraLookAtDesktop: THREE.Vector3;
-}
-interface Props extends Params {}
-
-const Customize: React.FC<Props> = ({
-  cameraPositionDesktop,
-  cameraPositionMobile,
-  cameraLookAtMobile,
-  cameraLookAtDesktop,
-}) => {
+const Customize: React.FC = () => {
   const {
     cameraRef,
     cameraTarget,
@@ -37,10 +30,10 @@ const Customize: React.FC<Props> = ({
         trigger: sectionContainer.current,
         cameraRef,
         cameraTarget,
-        cameraPositionDesktop,
-        cameraPositionMobile,
-        cameraLookAtMobile,
-        cameraLookAtDesktop,
+        cameraPositionDesktop: camera_position_10,
+        cameraPositionMobile: camera_position_10_mobile,
+        cameraLookAtMobile: cameraLookAt_10_mobile,
+        cameraLookAtDesktop: cameraLookAt_10,
         start: "top bottom",
         end: "top top",
       });
@@ -80,7 +73,7 @@ const Customize: React.FC<Props> = ({
         })}
       </div>
       <button className='btn-customize' onClick={toggleShowCustomizer}>
-        Customize
+        {isCustomizeVisible ? "Close" : "Customize"}
       </button>
     </Wrapper>
   );

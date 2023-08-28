@@ -14,6 +14,7 @@ const CustomizeWrapper = styled.section`
     border: none;
     padding: 0.5rem 1rem;
     z-index: 10;
+    cursor: pointer;
   }
 
   .overlay {
@@ -30,7 +31,7 @@ const CustomizeWrapper = styled.section`
 
   .label {
     position: fixed;
-    top: 150px;
+    bottom: 100px;
     left: 50%;
     transform: translate(-50%);
     text-align: center;

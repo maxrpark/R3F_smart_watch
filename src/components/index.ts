@@ -5,6 +5,9 @@ import SectionTitleAndDescription from "./SectionTitleAndDescription";
 import WatchModel from "./WatchModel";
 import Customize from "./Customize";
 import Loader from "./Loader";
+import SectionBatteries from "./SectionBatteries";
+import BackgroundParallax from "./BackgroundParallax";
+import Navbar from "./Navbar";
 
 export {
   Hero,
@@ -14,4 +17,7 @@ export {
   WatchModel,
   Customize,
   Loader,
+  SectionBatteries,
+  Navbar,
+  BackgroundParallax,
 };
