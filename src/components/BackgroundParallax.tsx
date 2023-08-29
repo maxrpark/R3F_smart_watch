@@ -34,12 +34,18 @@ const BackgroundParallax: React.FC = () => {
   };
   const animateSection = () => {
     let mm = gsap.matchMedia();
+
     mm.add(
       {
         isDesktop: `(min-width: ${breakPoint}px)`,
+        isMobile: `(max-width: ${breakPoint - 1}px)`,
       },
       (context) => {
-        let { isDesktop } = context.conditions as { isDesktop: boolean };
+        let { isDesktop, isMobile } = context.conditions as {
+          isDesktop: boolean;
+          isMobile: boolean;
+        };
+        console.log(isMobile);
 
         if (isDesktop) {
           let tl = gsap.timeline({
@@ -61,6 +67,20 @@ const BackgroundParallax: React.FC = () => {
             },
             0
           );
+        } else if (isMobile) {
+          let tl = gsap.timeline({
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionContainer.current,
+              start: "top 90%",
+              end: "bottom top",
+              scrub: 1,
+              toggleActions: "play pause resume reset",
+            },
+          });
+          tl.to(sectionContainer.current, {
+            backgroundPositionX: "0%",
+          });
         }
 
         return () => {
@@ -69,6 +89,9 @@ const BackgroundParallax: React.FC = () => {
           });
           gsap.set(".blend", {
             opacity: 1,
+          });
+          gsap.set(sectionContainer.current, {
+            clearProps: "backgroundPositionX",
           });
         };
       }
@@ -95,10 +118,11 @@ const BackgroundParallax: React.FC = () => {
 const Wrapper = styled.section`
   max-width: unset;
   background: url("/snow-img.jpg");
-  background-position: center;
+  background-position-x: 80%;
+  background-position-y: 0px;
   background-size: cover;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
+  /* background-repeat: no-repeat; */
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
