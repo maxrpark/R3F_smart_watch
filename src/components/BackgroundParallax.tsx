@@ -96,7 +96,6 @@ const Wrapper = styled.section<{ $bgImg: string }>`
   max-width: unset;
   background: ${(props) => `url(${props.$bgImg}) center/cover no-repeat`};
   background-attachment: fixed;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
