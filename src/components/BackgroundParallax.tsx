@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 //@ts-ignore
 import bgImg from "/snow-img.jpg";
+import { breakPoint } from "../utils/constants";
 gsap.registerPlugin(ScrollTrigger);
 
 const BackgroundParallax: React.FC = () => {
@@ -23,32 +24,54 @@ const BackgroundParallax: React.FC = () => {
         });
       },
       onLeave: () => {
-        gsap.to(".webgl-wrapper", {
-          zIndex: 1,
-        });
+        if (window.innerWidth > 800) {
+          gsap.to(".webgl-wrapper", {
+            zIndex: 1,
+          });
+        }
       },
     });
   };
   const animateSection = () => {
-    let tl = gsap.timeline({
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionContainer.current,
-        start: "top center",
-        end: "+=100%",
-        scrub: 1,
-        toggleActions: "play pause resume reset",
-      },
-    });
-
-    tl.to(contentGroup.current, {
-      scale: 0.5,
-    }).to(
-      ".blend",
+    let mm = gsap.matchMedia();
+    mm.add(
       {
-        opacity: 0,
+        isDesktop: `(min-width: ${breakPoint}px)`,
       },
-      0
+      (context) => {
+        let { isDesktop } = context.conditions as { isDesktop: boolean };
+
+        if (isDesktop) {
+          let tl = gsap.timeline({
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionContainer.current,
+              start: "top 40%",
+              end: "bottom top",
+              scrub: 1,
+              toggleActions: "play pause resume reset",
+            },
+          });
+          tl.to(contentGroup.current, {
+            scale: 0.5,
+          }).to(
+            ".blend",
+            {
+              opacity: 0,
+            },
+            0
+          );
+        }
+
+        return () => {
+          gsap.set(contentGroup.current, {
+            scale: 1,
+          });
+          gsap.set(".blend", {
+            opacity: 1,
+          });
+        };
+      }
     );
   };
 
@@ -71,6 +94,7 @@ const BackgroundParallax: React.FC = () => {
 
 const Wrapper = styled.section`
   background-attachment: fixed;
+  max-width: unset;
 
   display: flex;
   flex-direction: column;
@@ -78,7 +102,9 @@ const Wrapper = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
-
+  .content-group {
+    z-index: 1;
+  }
   img {
     position: absolute;
     top: 0;
@@ -86,30 +112,36 @@ const Wrapper = styled.section`
     width: 100%;
     height: 100%;
   }
-  .blend {
-    mix-blend-mode: lighten;
-  }
+
   h3 {
     color: var(--primary-orange);
-    font-size: 16rem;
+
+    font-size: 3rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
   }
   p {
-    font-size: 6.2rem;
+    font-size: 1.5rem;
+
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     color: black;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (min-width: 800px) {
     h3 {
-      font-size: 3.5rem;
+      font-size: 16rem;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 3.2rem;
+    }
+    .blend {
+      mix-blend-mode: darken;
+    }
+    .content-group {
+      z-index: unset;
     }
   }
 `;

@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.section<{ $alignItems?: string }>`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: ${(props) => props.$alignItems};
-  justify-content: center;
+  text-align: center;
 
   .features-wrapper {
     position: relative;
@@ -25,6 +22,12 @@ const Wrapper = styled.section<{ $alignItems?: string }>`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+  @media screen and (min-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    align-items: ${(props) => props.$alignItems};
+    justify-content: center;
   }
 `;
 export default Wrapper;

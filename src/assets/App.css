@@ -9,11 +9,16 @@
   --primary-black: #000000;
   --primary-orange: #f56900;
   --primary-gray: #86868b;
+  --primary-gray-2: #49494b;
 }
 
 html {
   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
     sans-serif;
+}
+
+p {
+  color: var(--primary-gray);
 }
 
 .webgl-wrapper {
@@ -30,12 +35,17 @@ html {
     background: rgba(255, 255, 255, 0.8);
   }
   .webgl-wrapper {
-    z-index: -1 !important;
+    z-index: -1;
+  }
+  p {
+    color: var(--primary-gray-2);
   }
 }
 
 section {
   min-height: 100vh;
-  /* border: 2px solid red; */
+  max-width: 1640px;
+
+  margin: 0 auto;
   padding: 0 2rem;
 }

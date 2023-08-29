@@ -8,6 +8,44 @@ gsap.registerPlugin(ScrollTrigger);
 const SectionBatteries: React.FC = () => {
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const mainTextContent = useRef<HTMLHeadElement[]>([]);
+  const durationDetail1 = useRef<HTMLSpanElement>(null!);
+  const durationDetail2 = useRef<HTMLSpanElement>(null!);
+
+  const animateSection = () => {
+    let tl = gsap.timeline({
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionContainer.current,
+        start: "top center",
+        end: "top top",
+        scrub: 1,
+        toggleActions: "play pause resume reset",
+      },
+    });
+
+    tl.to(mainTextContent.current, {
+      opacity: 1,
+      y: 0,
+    })
+      .to(durationDetail1.current, {
+        innerText: 36,
+        duration: 1,
+        snap: {
+          innerText: 1,
+        },
+      })
+      .to(
+        durationDetail2.current,
+        {
+          innerText: 60,
+          duration: 1,
+          snap: {
+            innerText: 1,
+          },
+        },
+        "<"
+      );
+  };
 
   useEffect(() => {
     gsap.to(".webgl-wrapper", {
@@ -18,44 +56,16 @@ const SectionBatteries: React.FC = () => {
         end: "+=10px",
         scrub: 1,
         toggleActions: "play pause resume reset",
+        onEnterBack: () => {
+          if (window.innerWidth < 800) {
+            gsap.to(".webgl-wrapper", {
+              zIndex: -1,
+            });
+          }
+        },
       },
     });
-  }, []);
-
-  useEffect(() => {
-    let tl = gsap.timeline({
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionContainer.current,
-        start: "top center",
-        end: "top 10%",
-        scrub: 1,
-        toggleActions: "play pause resume reset",
-      },
-    });
-
-    tl.to(mainTextContent.current, {
-      opacity: 1,
-      y: 0,
-    })
-      .to(".duration-1", {
-        innerText: 36,
-        duration: 1,
-        snap: {
-          innerText: 1,
-        },
-      })
-      .to(
-        ".duration-2",
-        {
-          innerText: 60,
-          duration: 1,
-          snap: {
-            innerText: 1,
-          },
-        },
-        "<"
-      );
+    animateSection();
   }, []);
 
   return (
@@ -80,15 +90,21 @@ const SectionBatteries: React.FC = () => {
         <div className='single-info'>
           <p className='duration-details-label'>Up to</p>
           <p className='duration-details-dsc'>
-            <span className='duration-1'>0</span>hrs
+            <span className='duration-1' ref={durationDetail1}>
+              0
+            </span>
+            hrs
           </p>
-          <p className='duration-details-label'>of normal use</p>
+          <p className='duration-details-label'>of normal use settings</p>
         </div>
         <div className='division'></div>
         <div className='single-info'>
           <p className='duration-details-label'>Up to</p>
           <p className='duration-details-dsc'>
-            <span className='duration-2'>0</span>hrs
+            <span className='duration-2' ref={durationDetail2}>
+              0
+            </span>
+            hrs
           </p>
           <p className='duration-details-label'>on low power settings</p>
         </div>

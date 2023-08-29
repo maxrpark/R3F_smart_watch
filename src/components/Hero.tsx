@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   const { cameraRef, cameraTarget } = useThreeContext();
 
   const sectionContainer = useRef<HTMLDivElement>(null!);
-  const mainTextContent = useRef<HTMLAllCollection[]>([]);
+  const mainTextContent = useRef<HTMLDivElement>(null!);
   const logoTitle = useRef<HTMLDivElement>(null!);
 
   const animateSection = () => {
@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
       scrollTrigger: {
         trigger: sectionContainer.current,
         start: "clamp(top 5%)",
-        end: "+=500",
+        end: "+=300",
         scrub: 1,
         toggleActions: "play pause resume reset",
       },
@@ -59,17 +59,15 @@ const Hero: React.FC = () => {
   return (
     <Wrapper ref={sectionContainer}>
       <div className='hero-content'>
-        {/* @ts-ignore */}
-        <h2 ref={(el) => (mainTextContent.current[0] = el)}>
-          Adventure awaits
-        </h2>
-        {/* @ts-ignore */}
-        <p ref={(el) => (mainTextContent.current[1] = el)}>
-          Meet the most rugged and capable Apple Watch ever. With a robust
-          titanium case, precision dual-frequency GPS, up to 36 hours of battery
-          life,1 the freedom of cellular,a and three specialized bands made for
-          athletes and adventurers of all kinds.
-        </p>
+        <div ref={mainTextContent}>
+          <h2>Adventure awaits</h2>
+          <p>
+            Meet the most rugged and capable Apple Watch ever. With a robust
+            titanium case, precision dual-frequency GPS, up to 36 hours of
+            battery life,1 the freedom of cellular,a and three specialized bands
+            made for athletes and adventurers of all kinds.
+          </p>
+        </div>
         <div ref={logoTitle} className='logo-watch'>
           <div className='apple-logo'>
             <svg

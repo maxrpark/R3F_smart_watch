@@ -106,7 +106,6 @@ const Wrapper = styled.section<{ $alignItems?: string }>`
     margin-bottom: 1rem;
   }
   p {
-    color: var(--primary-gray);
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;

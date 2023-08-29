@@ -25,20 +25,24 @@ const Wrapper = styled.nav`
   left: 0;
   width: 100%;
   z-index: 10;
+  backdrop-filter: blur(2px);
+
   .navbar {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0.7rem 2rem;
+    padding: 0.7rem 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(2px);
   }
   .logo {
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+  p {
+    color: var(--primary-black);
   }
 
   .max {
@@ -52,6 +56,10 @@ const Wrapper = styled.nav`
     &:hover {
       color: crimson;
     }
+  }
+
+  @media screen and (min-width: 687px) {
+    padding: 0.7rem 2rem;
   }
 `;
 export default Navbar;
