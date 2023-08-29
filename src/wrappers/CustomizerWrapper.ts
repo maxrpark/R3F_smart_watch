@@ -3,9 +3,10 @@ import styled from "styled-components";
 const CustomizeWrapper = styled.section`
   position: relative;
   background: transparent;
+  padding: 0;
   .btn-customize {
     position: absolute;
-    bottom: 20px;
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
     background: var(--primary-black);
@@ -31,10 +32,11 @@ const CustomizeWrapper = styled.section`
 
   .label {
     position: fixed;
-    bottom: 100px;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%);
     text-align: center;
+    width: 100%;
   }
   .colors-wrapper {
     position: fixed;
@@ -77,6 +79,14 @@ const CustomizeWrapper = styled.section`
       gap: 1rem;
       justify-content: flex-end;
       align-items: flex-end;
+    }
+
+    .btn-customize {
+      bottom: 20px;
+    }
+
+    .label {
+      bottom: 100px;
     }
   }
 `;

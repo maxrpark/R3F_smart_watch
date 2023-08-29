@@ -36,7 +36,6 @@ p {
   }
   .webgl-wrapper {
     z-index: -1;
-    background: red;
   }
   p {
     color: var(--primary-gray-2);
@@ -46,7 +45,7 @@ p {
 section {
   min-height: 100vh;
   max-width: 1640px;
-  background: blue !important;
+
   margin: 0 auto;
   padding: 0 2rem;
 }

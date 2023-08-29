@@ -71,7 +71,7 @@ export const ThreeProvider: FC<Props> = ({ children }) => {
   const toggleShowCustomizer = () => {
     if (document.body.style.overflow === "hidden") {
       document.body.style.overflow = "scroll";
-      gsap.set(".webgl-wrapper", {
+      gsap.to(".webgl-wrapper", {
         clearProps: "all",
       });
     } else {
@@ -80,8 +80,8 @@ export const ThreeProvider: FC<Props> = ({ children }) => {
       if (window.innerWidth < 800) {
         window.alert("Drag to explore the 360-degree view");
       }
-      gsap.set(".webgl-wrapper", {
-        zIndex: 1,
+      gsap.to(".webgl-wrapper", {
+        zIndex: 2,
       });
     }
     setIsCustomizeVisible((oldValue) => {
