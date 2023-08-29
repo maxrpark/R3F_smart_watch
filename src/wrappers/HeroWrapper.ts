@@ -47,6 +47,7 @@ const Wrapper = styled.section`
   .logo-watch {
     opacity: 0;
     transform: translateY(-5.5rem);
+    margin-right: 0.5rem;
 
     .apple-logo {
       display: flex;

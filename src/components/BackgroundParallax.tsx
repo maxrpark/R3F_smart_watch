@@ -80,7 +80,7 @@ const BackgroundParallax: React.FC = () => {
     animateSection();
   }, []);
   return (
-    <Wrapper ref={sectionContainer}>
+    <Wrapper ref={sectionContainer} $bgImg={bgImg}>
       <div ref={contentGroup} className='content-group'>
         <p>Adventure</p>
         <h3>
@@ -92,9 +92,10 @@ const BackgroundParallax: React.FC = () => {
   );
 };
 
-const Wrapper = styled.section`
-  background-attachment: fixed;
+const Wrapper = styled.section<{ $bgImg: string }>`
   max-width: unset;
+  background: ${(props) => `url(${props.$bgImg}) center/cover no-repeat`};
+  background-attachment: fixed;
 
   display: flex;
   flex-direction: column;
@@ -111,6 +112,8 @@ const Wrapper = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
+    visibility: hidden;
+    object-fit: cover;
   }
 
   h3 {
@@ -131,6 +134,10 @@ const Wrapper = styled.section`
   }
 
   @media screen and (min-width: 800px) {
+    background: none;
+    img {
+      visibility: visible;
+    }
     h3 {
       font-size: 16rem;
     }

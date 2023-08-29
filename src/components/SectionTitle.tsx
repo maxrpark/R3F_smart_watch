@@ -18,7 +18,7 @@ const SectionTitle: React.FC = () => {
   const bgWrapper = useRef<HTMLDivElement>(null!);
 
   const animation = () => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({ default: { ease: "none" } });
     ScrollTrigger.create({
       trigger: sectionContainer.current,
       start: "top 40%",

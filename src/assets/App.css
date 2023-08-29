@@ -49,3 +49,13 @@ section {
   margin: 0 auto;
   padding: 0 2rem;
 }
+/* LEVA */
+/* .top-left,
+.leva-c-kWgxhW-eXrJvq-flat-false {
+  top: 80px;
+} */
+
+.webgl-wrapper:has(.top-left, .leva-c-kWgxhW-eXrJvq-flat-false) .top-left,
+.leva-c-kWgxhW-eXrJvq-flat-false {
+  top: 80px;
+}
