@@ -23,14 +23,12 @@ const SectionTitle: React.FC = () => {
       trigger: sectionContainer.current,
       start: "top 40%",
       toggleActions: "play none none reverse",
-      end: "bottom 70%",
+      end: "top 10%",
       scrub: 0.5,
       animation: tl,
     });
     tl.to(bgWrapper.current, {
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-    }).to(sectionContainer.current, {
-      background: "white",
     });
   };
 
