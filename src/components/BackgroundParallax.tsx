@@ -98,7 +98,7 @@ const Wrapper = styled.section`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
