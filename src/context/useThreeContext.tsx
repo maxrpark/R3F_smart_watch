@@ -76,12 +76,13 @@ export const ThreeProvider: FC<Props> = ({ children }) => {
       });
     } else {
       document.body.style.overflow = "hidden";
-      gsap.set(".webgl-wrapper", {
-        zIndex: 1,
-      });
+
       if (window.innerWidth < 800) {
         window.alert("Drag to explore the 360-degree view");
       }
+      gsap.set(".webgl-wrapper", {
+        zIndex: 1,
+      });
     }
     setIsCustomizeVisible((oldValue) => {
       const newValue = !oldValue;
