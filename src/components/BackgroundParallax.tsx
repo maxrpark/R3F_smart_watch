@@ -94,7 +94,11 @@ const BackgroundParallax: React.FC = () => {
 
 const Wrapper = styled.section<{ $bgImg: string }>`
   max-width: unset;
-  background: ${(props) => `url(${props.$bgImg}) center/cover no-repeat`};
+  /* background: ${(props) => `url(/snow-img.jpg)`}; */
+  background: url("/snow-img.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
