@@ -80,7 +80,7 @@ const BackgroundParallax: React.FC = () => {
     animateSection();
   }, []);
   return (
-    <Wrapper ref={sectionContainer} $bgImg={bgImg}>
+    <Wrapper ref={sectionContainer}>
       <div ref={contentGroup} className='content-group'>
         <p>Adventure</p>
         <h3>
@@ -92,7 +92,7 @@ const BackgroundParallax: React.FC = () => {
   );
 };
 
-const Wrapper = styled.section<{ $bgImg: string }>`
+const Wrapper = styled.section`
   max-width: unset;
   /* background: ${(props) => `url(/snow-img.jpg)`}; */
   background: url("/snow-img.jpg");
