@@ -5,9 +5,11 @@ import { useEffect, useRef } from "react";
 //@ts-ignore
 import bgImg from "/snow-img.jpg";
 import { breakPoint } from "../utils/constants";
+import { useThreeContext } from "../context/useThreeContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const BackgroundParallax: React.FC = () => {
+  const { cameraRef } = useThreeContext();
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const contentGroup = useRef<HTMLDivElement>(null!);
 
@@ -45,7 +47,6 @@ const BackgroundParallax: React.FC = () => {
           isDesktop: boolean;
           isMobile: boolean;
         };
-        console.log(isMobile);
 
         if (isDesktop) {
           let tl = gsap.timeline({
@@ -99,9 +100,10 @@ const BackgroundParallax: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!cameraRef.current) return;
     canvasZIndex();
     animateSection();
-  }, []);
+  }, [cameraRef.current]);
   return (
     <Wrapper ref={sectionContainer}>
       <div ref={contentGroup} className='content-group'>

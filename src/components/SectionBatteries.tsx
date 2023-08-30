@@ -2,10 +2,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Wrapper from "../wrappers/SectionBatteries";
+import { useThreeContext } from "../context/useThreeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SectionBatteries: React.FC = () => {
+  const { cameraRef } = useThreeContext();
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const mainTextContent = useRef<HTMLHeadElement[]>([]);
   const durationDetail1 = useRef<HTMLSpanElement>(null!);
@@ -46,8 +48,7 @@ const SectionBatteries: React.FC = () => {
         "<"
       );
   };
-
-  useEffect(() => {
+  const canvasZIndex = () => {
     gsap.to(".webgl-wrapper", {
       zIndex: -1,
       scrollTrigger: {
@@ -65,8 +66,13 @@ const SectionBatteries: React.FC = () => {
         },
       },
     });
+  };
+
+  useEffect(() => {
+    if (!cameraRef.current) return;
+    canvasZIndex();
     animateSection();
-  }, []);
+  }, [cameraRef.current]);
 
   return (
     <Wrapper ref={sectionContainer}>
