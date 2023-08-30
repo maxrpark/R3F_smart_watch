@@ -8,6 +8,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  max-width: unset;
 
   .title-section {
     width: 100%;
@@ -45,6 +46,7 @@ const Wrapper = styled.section`
     text-align: center;
     gap: 1rem;
     margin-top: 70px;
+    min-height: 170px;
   }
 
   .division {
@@ -85,9 +87,9 @@ const Wrapper = styled.section`
       flex-direction: row;
       gap: 4.375rem;
       margin-top: 70px;
+      min-height: 270px;
     }
     .division {
-      width: 3px;
       height: 270px;
     }
 

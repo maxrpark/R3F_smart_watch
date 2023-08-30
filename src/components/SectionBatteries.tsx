@@ -46,6 +46,14 @@ const SectionBatteries: React.FC = () => {
           },
         },
         "<"
+      )
+      .from(
+        ".division",
+        {
+          height: 0,
+          duration: 1,
+        },
+        0.5
       );
   };
   const canvasZIndex = () => {
