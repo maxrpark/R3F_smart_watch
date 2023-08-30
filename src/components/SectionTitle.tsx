@@ -69,6 +69,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  max-width: unset;
 
   .bg-wrapper {
     background: var(--primary-black);
