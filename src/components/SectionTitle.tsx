@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useThreeContext } from "../context/useThreeContext";
-import { animateCamera } from "../animations/animateCamera";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,11 +10,22 @@ import {
   cameraLookAt_3,
   cameraLookAt_3_mobile,
 } from "../utils/modelPositions";
+import { useAnimateCamera } from "../hooks/useAnimateCamera";
 
 const SectionTitle: React.FC = () => {
-  const { cameraRef, cameraTarget } = useThreeContext();
+  const { cameraRef } = useThreeContext();
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const bgWrapper = useRef<HTMLDivElement>(null!);
+
+  useAnimateCamera({
+    trigger: sectionContainer,
+    cameraPositionDesktop: camera_position_3,
+    cameraPositionMobile: camera_position_3_mobile,
+    cameraLookAtMobile: cameraLookAt_3_mobile,
+    cameraLookAtDesktop: cameraLookAt_3,
+    start: "top bottom",
+    end: "top top",
+  });
 
   const animation = () => {
     const tl = gsap.timeline({ default: { ease: "none" } });
@@ -33,20 +43,7 @@ const SectionTitle: React.FC = () => {
   };
 
   useEffect(() => {
-    if (cameraRef.current) {
-      animateCamera({
-        trigger: sectionContainer.current,
-        cameraRef,
-        cameraTarget,
-        cameraPositionDesktop: camera_position_3,
-        cameraPositionMobile: camera_position_3_mobile,
-        cameraLookAtMobile: cameraLookAt_3_mobile,
-        cameraLookAtDesktop: cameraLookAt_3,
-        start: "top bottom",
-        end: "top top",
-      });
-      animation();
-    }
+    if (cameraRef.current) animation();
   }, [cameraRef.current]);
   return (
     <Wrapper ref={sectionContainer}>

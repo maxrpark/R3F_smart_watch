@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useThreeContext } from "../context/useThreeContext";
-import { animateCamera } from "../animations/animateCamera";
 import Wrapper from "../wrappers/HeroWrapper";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,13 +10,24 @@ import {
   cameraLookAt_2,
   cameraLookAt_2_mobile,
 } from "../utils/modelPositions";
+import { useAnimateCamera } from "../hooks/useAnimateCamera";
 
 const Hero: React.FC = () => {
-  const { cameraRef, cameraTarget } = useThreeContext();
+  const { cameraRef } = useThreeContext();
 
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const mainTextContent = useRef<HTMLDivElement>(null!);
   const logoTitle = useRef<HTMLDivElement>(null!);
+
+  useAnimateCamera({
+    trigger: sectionContainer,
+    cameraPositionDesktop: camera_position_2,
+    cameraPositionMobile: camera_position_2_mobile,
+    cameraLookAtMobile: cameraLookAt_2_mobile,
+    cameraLookAtDesktop: cameraLookAt_2,
+    start: "top top",
+    end: "+=300px",
+  });
 
   const animateSection = () => {
     let tl = gsap.timeline({
@@ -40,20 +50,7 @@ const Hero: React.FC = () => {
   };
 
   useEffect(() => {
-    if (cameraRef.current) {
-      animateCamera({
-        trigger: sectionContainer.current,
-        cameraRef,
-        cameraTarget,
-        cameraPositionDesktop: camera_position_2,
-        cameraPositionMobile: camera_position_2_mobile,
-        cameraLookAtMobile: cameraLookAt_2_mobile,
-        cameraLookAtDesktop: cameraLookAt_2,
-        start: "top top",
-        end: "+=300px",
-      });
-      animateSection();
-    }
+    if (cameraRef.current) animateSection();
   }, [cameraRef.current]);
 
   return (

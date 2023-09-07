@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { animateCamera } from "../animations/animateCamera";
 import { useThreeContext } from "../context/useThreeContext";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimateCamera } from "../hooks/useAnimateCamera";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Params {
@@ -27,9 +27,19 @@ const SectionTitleAndDescription: React.FC<Props> = ({
   description,
   alignItem,
 }) => {
-  const { cameraRef, cameraTarget } = useThreeContext();
+  const { cameraRef } = useThreeContext();
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const mainTextContent = useRef<HTMLDivElement>(null!);
+
+  useAnimateCamera({
+    trigger: sectionContainer,
+    cameraPositionDesktop,
+    cameraPositionMobile,
+    cameraLookAtMobile,
+    cameraLookAtDesktop,
+    start: "top bottom",
+    end: "top top",
+  });
 
   const animateSection = () => {
     let tl = gsap.timeline({
@@ -57,20 +67,7 @@ const SectionTitleAndDescription: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (cameraRef.current) {
-      animateCamera({
-        trigger: sectionContainer.current,
-        cameraRef,
-        cameraTarget,
-        cameraPositionDesktop,
-        cameraPositionMobile,
-        cameraLookAtMobile,
-        cameraLookAtDesktop,
-        start: "top bottom",
-        end: "top top",
-      });
-      animateSection();
-    }
+    if (cameraRef.current) animateSection();
   }, [cameraRef.current]);
 
   return (

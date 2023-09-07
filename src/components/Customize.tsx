@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useThreeContext } from "../context/useThreeContext";
 import { colors } from "../utils/constants";
 import { convertBgColor } from "../utils/helpers";
-import { animateCamera } from "../animations/animateCamera";
 import Wrapper from "../wrappers/CustomizerWrapper";
 import * as THREE from "three";
 import {
@@ -11,11 +10,10 @@ import {
   cameraLookAt_10,
   cameraLookAt_10_mobile,
 } from "../utils/modelPositions";
+import { useAnimateCamera } from "../hooks/useAnimateCamera";
 
 const Customize: React.FC = () => {
   const {
-    cameraRef,
-    cameraTarget,
     isCustomizeVisible,
     selectedColor,
     changeColor,
@@ -24,21 +22,15 @@ const Customize: React.FC = () => {
 
   const sectionContainer = useRef<HTMLDivElement>(null!);
 
-  useEffect(() => {
-    if (cameraRef.current) {
-      animateCamera({
-        trigger: sectionContainer.current,
-        cameraRef,
-        cameraTarget,
-        cameraPositionDesktop: camera_position_10,
-        cameraPositionMobile: camera_position_10_mobile,
-        cameraLookAtMobile: cameraLookAt_10_mobile,
-        cameraLookAtDesktop: cameraLookAt_10,
-        start: "top bottom",
-        end: "top top",
-      });
-    }
-  }, [cameraRef.current]);
+  useAnimateCamera({
+    trigger: sectionContainer,
+    cameraPositionDesktop: camera_position_10,
+    cameraPositionMobile: camera_position_10_mobile,
+    cameraLookAtMobile: cameraLookAt_10_mobile,
+    cameraLookAtDesktop: cameraLookAt_10,
+    start: "top bottom",
+    end: "top top",
+  });
   return (
     <Wrapper className='customize-section' ref={sectionContainer}>
       <div

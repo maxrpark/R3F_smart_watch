@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useThreeContext } from "../context/useThreeContext";
-import { animateCamera } from "../animations/animateCamera";
 import Wrapper from "../wrappers/FeaturesWrapper";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimateCamera } from "../hooks/useAnimateCamera";
 gsap.registerPlugin(ScrollTrigger);
 
 interface Params {
@@ -25,10 +25,20 @@ const SectionFeatures: React.FC<Props> = ({
   texts,
   alignItems,
 }) => {
-  const { cameraRef, cameraTarget } = useThreeContext();
+  const { cameraRef } = useThreeContext();
 
   const sectionContainer = useRef<HTMLDivElement>(null!);
   const featuresList = useRef<HTMLHeadingElement[]>([]);
+
+  useAnimateCamera({
+    trigger: sectionContainer,
+    cameraPositionDesktop,
+    cameraPositionMobile,
+    cameraLookAtMobile,
+    cameraLookAtDesktop,
+    start: "top bottom",
+    end: "top top",
+  });
 
   const animateSection = () => {
     featuresList.current.forEach((el) => {
@@ -67,20 +77,7 @@ const SectionFeatures: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (cameraRef.current) {
-      animateCamera({
-        trigger: sectionContainer.current,
-        cameraRef,
-        cameraTarget,
-        cameraPositionDesktop,
-        cameraPositionMobile,
-        cameraLookAtMobile,
-        cameraLookAtDesktop,
-        start: "top bottom",
-        end: "top top",
-      });
-      animateSection();
-    }
+    if (cameraRef.current) animateSection();
   }, [cameraRef.current]);
 
   return (
