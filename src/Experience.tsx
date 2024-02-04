@@ -1,14 +1,24 @@
 import { useControls } from "leva";
 import WatchModel from "./components/WatchModel";
-import { Environment, OrbitControls } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useThreeContext } from "./context/useThreeContext";
-import { useEffect } from "react";
-import { cameraLookAt_1, cameraLookAt_1_mobile } from "./utils/modelPositions";
+import { useEffect, useState } from "react";
+import {
+  cameraLookAt_1,
+  cameraLookAt_1_mobile,
+  camera_position_1,
+  camera_position_1_mobile,
+} from "./utils/modelPositions";
 
 const Experience: React.FC = () => {
   const { cameraRef, isCustomizeVisible } = useThreeContext();
   const { camera } = useThree();
+  const [cameraPosition, setCameraPosition] = useState(camera_position_1);
 
   const { color: ambientColor, intensity: ambientIntensity } = useControls(
     "Ambient Light",
@@ -45,16 +55,24 @@ const Experience: React.FC = () => {
 
   useEffect(() => {
     if (window.innerWidth > 800) {
+      setCameraPosition(camera_position_1);
       camera.lookAt(cameraLookAt_1);
     } else {
+      setCameraPosition(camera_position_1_mobile);
       camera.lookAt(cameraLookAt_1_mobile);
     }
-
-    cameraRef.current = camera;
-  }, []);
+  }, [cameraRef.current, cameraPosition]);
 
   return (
     <>
+      <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        fov={25}
+        near={0.2}
+        far={1000}
+        position={cameraPosition}
+      />
       <OrbitControls enabled={isCustomizeVisible} />
       <Environment preset='apartment' />
       <ambientLight color={ambientColor} intensity={ambientIntensity} />

@@ -14,12 +14,17 @@ const Loader: React.FC<Props> = ({ progress }) => {
   );
 };
 const Wrapper = styled.div`
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: var(--primary-yellow);
+  background: var(--primary-white);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0%;
 
   p {
     font-size: 4rem;

@@ -37,7 +37,6 @@ export const useAnimateCamera = ({
         start,
         end,
         scrub: true,
-        // markers: true,
       },
     });
 

@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^9.80.4",
     "@react-three/fiber": "^8.13.7",
+    "@studio-freight/react-lenis": "^0.0.43",
     "@types/three": "^0.155.0",
     "@vercel/analytics": "^1.0.2",
     "gsap": "^3.12.2",

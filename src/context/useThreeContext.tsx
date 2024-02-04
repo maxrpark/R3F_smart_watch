@@ -117,7 +117,7 @@ export const ThreeProvider: FC<Props> = ({ children }) => {
     } else {
       cameraTarget.current = cameraLookAt_1_mobile;
     }
-  }, []);
+  }, [window]);
 
   return (
     <ThreeContext.Provider
