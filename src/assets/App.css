@@ -17,7 +17,10 @@ html {
     sans-serif;
 }
 
-html.lenis {
+/* START LENIS  */
+
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -33,9 +36,57 @@ html.lenis {
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
+.lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+/* END LENIS  */
+
+/* START SCROLLBAR*/
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-orange);
+  border-radius: 10px;
+  border: 3px solid var(--primary-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-orange);
+  border-radius: 10px;
+  border: 3px solid var(--primary-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--primary-orange) var(--primary-gray); /* thumb and track color */
+  scrollbar-width: thin;
+}
+
+/* END SCROLLBAR*/
 
 p {
   color: var(--primary-gray);
